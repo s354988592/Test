@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="root1"></div>
+    <script type="text/babel">
+      // 定义一个组件
+      class Welcome extends React.Component {
+        render() {
+          return <h1>Hello, {this.props.name}</h1>;
+        }
+      }
+        ReactDOM.render(
+                <Welcome name='你好这样也可以直接编译'/>,
+        document.getElementById('root1')
+        )
+
+
+      let a  = (()=>{
+        console.log(1);
+        return 1
+      })()
+
+      class HelloMessage extends React.Component{
+        render(){
+          return  <div>hello{this.props.name}</div>
+        }
+      }
+
+
+      ReactDOM.render(<HelloMessage name ='哎呦喂' />,
+              document.querySelector('#root'))
+
+    </script>
+  </body>
+</html>

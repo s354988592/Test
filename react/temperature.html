@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    function BoilWater(props) {
+        if (props.num >= 100) {
+            return <p>水沸腾了`````</p>
+        }
+            return <p>水还没有沸腾。。。。。</p>
+
+    }
+
+    class Temperature extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.state = {value: ''};
+
+        }
+
+        handleChange(e) {
+            this.setState({value: e.target.value})
+        }
+
+        render() {
+            const value = this.state.value;
+            return (
+                    <fieldset>
+                        <legend>请在输入框中输入温度:</legend>
+                        <input
+                                value={value}
+                                onChange={this.handleChange}/>
+                        <BoilWater num={parseFloat(value)}/>
+                    </fieldset>
+            )
+        }
+    }
+
+    const scaleNames = {
+        c: 'Celsius',
+        f: 'Fahrenheit'
+    };
+
+
+
+    ReactDOM.render(
+            <Temperature />,
+            document.getElementById('root')
+    );
+
+
+</script>
+</body>
+</html>

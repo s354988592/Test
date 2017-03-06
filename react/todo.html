@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO APP</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      div{
+        display: inline-block;
+      }
+      #root1{
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="root1"></div>
+    <section class="section"></section>
+    <script type="text/babel">
+      class TodoApp extends React.Component{
+        constructor(props){
+          super(props);
+          this.state = {
+            items:[],
+            text:''
+          }
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        render(){
+          return  (
+                  <div>
+                    <h2>TODOAPP</h2>
+                    <TodoList items={this.state.items}/>
+                    <form onSubmit={this.handleSubmit}>
+                      <input type="text" onChange={this.handleChange} value={this.state.text}/>
+                      <button>{'ADD#共计: '+(this.state.items.length +1)+' 次'}</button>
+                    </form>
+                  </div>
+          )
+        }
+
+        handleChange(e){
+          this.setState({text:e.target.value})
+        }
+        handleSubmit(e){
+          e.preventDefault();
+          var newItem = {
+            text:this.state.text,
+            id:Date.now()
+          };
+          this.setState((prevState)=>({
+            items:prevState.items.concat(newItem),
+            text:''
+          }))
+        }
+      }
+
+      class TodoList extends React.Component{
+        render(){
+          return(
+                  <ul>
+                    {this.props.items.map(item =>(
+                      <li key={item.id}>{item.text}</li>
+                    ))}
+                  </ul>
+          )
+        }
+      }
+
+      ReactDOM.render(
+              <TodoApp />,
+              document.querySelector('#root')
+      )
+
+
+
+
+
+      class Timer extends React.Component{
+        constructor(props){
+          super(props);
+          this.state = {secondsElapsed:0};
+        }
+
+        tick(){
+          this.setState((prevState)=>({
+            secondsElapsed:prevState.secondsElapsed +1
+          }))
+        }
+        // 组件加载完成(生命周期的钩子)
+        componentDidMount(){
+          this.interval = setInterval(()=>this.tick(),1000)
+        }
+
+        componentWillUnmount(){
+          clearInterval(this.interval)
+        }
+
+        render(){
+          return(
+                  <div>
+                    流逝的时间,单位秒: {this.state.secondsElapsed}
+                  </div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+              <Timer/>,
+              document.querySelector('#root1')
+      )
+
+
+
+
+      // markdown 暂时不可用
+      class MarkDownE extends React.Component{
+        constructor(props){
+          super(props);
+          this.state = {value:'Type some *markdown* here!'}
+          this.handleChange = this.handleChange.bind(this)
+        }
+
+        handleChange() {
+          this.setState({value: this.refs.textarea.value});
+        }
+
+        getRawMarkup() {
+          var md = new Remarkable();
+          return { __html: md.render(this.state.value) };
+        }
+
+        render(){
+          return(
+                  <div>
+                    <h3>Input 输入</h3>
+                    <textarea
+                        onChange={this.handleChange}
+                        ref = 'textarea'
+                        defaultValue={this.state.value}>
+
+                    </textarea>
+                    <h3>Output 输出</h3>
+                    <div className="content"
+                         dangerouslySetInnerHTML={this.getRawMarkup()}
+                    ></div>
+                  </div>
+          )
+        }
+
+      }
+      ReactDOM.render(
+              <MarkDownE />,
+              document.querySelector('.section')
+      )
+    </script>
+  </body>
+</html>
