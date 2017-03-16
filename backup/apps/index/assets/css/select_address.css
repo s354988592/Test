@@ -1,0 +1,87 @@
+.selAdd-selectAddress{
+        background-color: #f3f9fd;
+}
+.selAdd-selectAddress .selAdd-logo{
+      width: 26.66%;
+    padding: .416rem 2.66%;
+    height: 2.078rem;
+}
+.selAdd-selectAddress .selAdd-logo-icon{
+
+width: 100%;
+}
+.selAdd-check-login-container{
+    /*display: flex;
+    justify-content: space-between;*/
+     height: 2.91rem;
+    line-height: 2.91rem;
+     /*width: 100%;*/
+}
+.selAdd-selectAddress .selAdd-selectProvince{
+    text-align: left;
+    font-size: 1.3rem;
+    color:#5c5c5c;
+    /*width: 20vw;*/
+}
+.selAdd-provinceContainer{
+    display: none;
+}
+.selAdd-provinceList{
+    width: 96%;
+    background-color: #fff;
+    margin: auto;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.selAdd-provinceList-li{
+        list-style: none;
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.4rem;
+    /*height: 5vh;
+    line-height: 5vh;*/
+    padding:1.25rem 0;
+     color:#5c5c5c;
+}
+.selAdd-provinceList .selAdd-liActive{
+    color:#0167cc;
+}
+.selAdd-selectAddress .selAdd-selectIconDown{
+    background: url('../img/selectDown.png') no-repeat center right;
+      background-size: 30% auto;
+    padding: 0 1.25rem 0 0;
+}
+.selAdd-selectAddress .selAdd-selectIconUp{
+    background: url('../img/selectUp.png') no-repeat center right;
+     background-size: 30% auto;
+    padding: 0 1.25rem 0 0;
+
+}
+.selAdd-selectAddress .selAdd-isLogin{
+    text-align: right;
+    font-size: 1.4rem;
+    padding: 0 1.25rem;
+    color: #0167cc!important;
+    float: right;
+}
+.selAdd-provinceContainerActive{
+    display: block;
+    background-color: rgba(0,0,0,.4);
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    width: 100%;
+}
+.selAdd-log-out .log-out-content{
+   text-align: center;
+    font-size: 1.4rem;
+    padding:0;
+}
+.selAdd-log-out .layui-m-layerbtn span:nth-child(2){
+  background-color: #fff;
+  }
+
+.selAdd-selectAddress .layui-m-layer0 .layui-m-layerchild {
+    width: 73.3%;
+}

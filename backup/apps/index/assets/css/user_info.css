@@ -1,0 +1,21 @@
+.userinfo-container{
+   height: 2.5rem;
+   line-height: 2.5rem;
+}
+.userinfo-container .userinfo-telephone{
+    display: block;
+    font-size: 1.3rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    color: #5c5c5c;
+    padding: 0 0.83rem;
+    float: left;
+}
+.userinfo-container .userinfo-address{
+    display: block;
+    font-size: 1.3rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    color: #5c5c5c;
+    float: left;
+}
