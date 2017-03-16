@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testAES</title>
+	<meta charset="utf-8">
+
+
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	var a = {"historyBillInfo": [
+          {
+            "inBill": "12",
+            "billCycleStartDate": "20161201",
+            "billCycleEndDate": "20161231",
+            "toatlBill": "24.17",
+            "billMaterial": [
+              {
+                "billEntries": "固定费用",
+                "billEntriesValue": "20.09",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "语音套餐固定费",
+                    "thirdItemsValue": "1.80"
+                  },
+                  {
+                    "thirdItemsName": "其他业务功能费",
+                    "thirdItemsValue": "18.29"
+                  }
+                ]
+              },
+              {
+                "billEntries": "语音通信费",
+                "billEntriesValue": "4.08",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "本地基本通话费",
+                    "thirdItemsValue": "4.08"
+                  }
+                ]
+              },
+              {
+                "billEntries": "上网费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "短彩信",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "增值业务费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "代收费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "其他费用",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              }
+            ]
+          },
+          {
+            "inBill": "01",
+            "billCycleStartDate": "20170101",
+            "billCycleEndDate": "20170131",
+            "toatlBill": "76.78",
+            "billMaterial": [
+              {
+                "billEntries": "固定费用",
+                "billEntriesValue": "18.00",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "其他业务功能费",
+                    "thirdItemsValue": "18.00"
+                  }
+                ]
+              },
+              {
+                "billEntries": "语音通信费",
+                "billEntriesValue": "58.14",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "一体化语音通话费",
+                    "thirdItemsValue": "58.14"
+                  }
+                ]
+              },
+              {
+                "billEntries": "上网费",
+                "billEntriesValue": "0.54",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "GPRS/3G流量费",
+                    "thirdItemsValue": "0.54"
+                  }
+                ]
+              },
+              {
+                "billEntries": "短彩信",
+                "billEntriesValue": "0.10",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "短信费",
+                    "thirdItemsValue": "0.10"
+                  }
+                ]
+              },
+              {
+                "billEntries": "增值业务费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "代收费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "其他费用",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              }
+            ]
+          },
+          {
+            "inBill": "02",
+            "billCycleStartDate": "20170201",
+            "billCycleEndDate": "20170228",
+            "toatlBill": "30.73",
+            "billMaterial": [
+              {
+                "billEntries": "固定费用",
+                "billEntriesValue": "18.00",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "其他业务功能费",
+                    "thirdItemsValue": "18.00"
+                  }
+                ]
+              },
+              {
+                "billEntries": "语音通信费",
+                "billEntriesValue": "12.73",
+                "thirdBillMaterialInfo": [
+                  {
+                    "thirdItemsName": "一体化语音通话费",
+                    "thirdItemsValue": "12.73"
+                  }
+                ]
+              },
+              {
+                "billEntries": "上网费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "短彩信",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "增值业务费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "代收费",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              },
+              {
+                "billEntries": "其他费用",
+                "billEntriesValue": "0.00",
+                "thirdBillMaterialInfo": null
+              }
+            ]
+          }
+        ]
+    }
+
+    var data = {
+    	total: 0,
+    	net_fee: [],
+    	talk_fee: [],
+    	msg_fee:[],
+    	add_fee:[],
+    	proxy_fee:[],
+    	other_fee:[],
+    	start_time: 0,
+    	end_time: 0
+    }
+
+    console.log(a)
+    var arr = a.historyBillInfo
+    arr.forEach( function(ele, index) {
+    	var bills = ele.billMaterial;
+    	bills.forEach( function(bill, index) {
+    		console.log(bill)
+    		var val = parseInt(bill.billEntriesValue)
+    		if (bill.billEntries == '固定费用') {
+    			data.total += val
+    		} else if (bill.billEntries == '语音通信费') {
+    			data.talk_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    		} else if (bill.billEntries == '上网费') {
+    			data.net_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    		}else if (bill.billEntries == '短彩信') {
+    			data.msg_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    			
+    		}else if (bill.billEntries == '增值业务费') {
+    			data.add_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    			
+    		}else if (bill.billEntries == '代收费') {
+    			data.proxy_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    			
+    		}else if (bill.billEntries == '其他费用') {
+    			data.other_fee.push({
+    				key: ele.billCycleStartDate.substring(0, 6),
+    				val: val
+    			})
+    			
+    		}
+    	});
+    });
+   console.log(data)
+
+
+</script>
+
+
+
